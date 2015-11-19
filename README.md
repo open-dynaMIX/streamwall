@@ -7,7 +7,7 @@ Or see the file ./COPYING
 ##Introduction
 Set images from livestreams as wallpaper at a given interval.  
 By default it uses the HDEV-stream from the International Space Station  
-(ISS)
+(ISS).
 
 With the `-s` option, you can use any another livestream that can be handled  
 by `livestreamer`.  
