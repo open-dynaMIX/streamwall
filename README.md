@@ -2,6 +2,7 @@
 Distributed under the GNU GPL  
 http://www.gnu.org/licenses/gpl-3.0.txt  
 Or see the file ./LICENSE
+Exception: iss_error.png belongs to NASA
 
 
 ##Introduction
