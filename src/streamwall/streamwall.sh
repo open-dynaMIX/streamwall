@@ -31,7 +31,7 @@ Optional arguments:
                     (defaults to 180)
   -d              Print debug-messages
 
-You can find the actual and the previous wallpaper in $HOME/.streamwall
+You can find the actual and the previous wallpaper in $HOME/.$appname
 EOF
 }
 
