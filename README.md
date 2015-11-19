@@ -45,7 +45,7 @@ Optional arguments:
   -f <command>    Command to set the wallpaper (defaults to
                     'feh --bg-scale {%FILE}')
   -w              Seconds to wait before getting the next image
-                    (defaults to 120)
+                    (defaults to 180)
   -d              Print debug-messages
 ```
 

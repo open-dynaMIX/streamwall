@@ -28,7 +28,7 @@ Optional arguments:
   -f <command>    Command to set the wallpaper (defaults to
                     'feh --bg-scale {%FILE}')
   -w              Seconds to wait before getting the next image
-                    (defaults to 120)
+                    (defaults to 180)
   -d              Print debug-messages
 
 You can find the actual and the previous wallpaper in $HOME/.streamwall
@@ -47,7 +47,7 @@ parse_args () {
     no_error=false
     do_timestamp=false
     feh_cmd="feh --bg-scale $FILE"
-    wait_for=120
+    wait_for=180
     debug=false
 
     while getopts "h?s:q:obntf:w:d" opt; do
