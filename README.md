@@ -20,7 +20,7 @@ You can find the actual and the previous wallpaper in `~/.streamwall`
 
 
 ##Dependencies
-streamwall depends on:
+`streamwall` is written in bash and depends on:
  - livestreamer
  - ffmpeg
  - imagemagick
