@@ -37,7 +37,7 @@ EOF
 
 parse_args () {
     # A POSIX variable
-    OPTIND=1         # Reset in case getopts has been used previously in the shell.
+    OPTIND=1 # Reset in case getopts has been used previously in the shell.
 
     # Initialize our own variables:
     stream_url="https://www.ustream.tv/channel/iss-hdev-payload"
@@ -148,10 +148,13 @@ interval () {
 
 find_scriptdir () {
     SOURCE="${BASH_SOURCE[0]}"
-    while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+    # resolve $SOURCE until the file is no longer a symlink
+    while [ -h "$SOURCE" ]; do
         DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
         SOURCE="$(readlink "$SOURCE")"
-        [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+        # if $SOURCE was a relative symlink, we need to resolve it relative
+        # to the path where the symlink file was located
+        [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
     done
     DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
     realpath "$DIR"
@@ -194,7 +197,7 @@ scriptdir=$(find_scriptdir)
 
 cd "$HOME"/.$appname || exit
 
-# first set wallpaper from last boot, if available, in case we run after a reboot
+# first set existing wallpaper, if available, in case we run after a reboot
 if [ -f "$FILE" ]; then
     $feh_cmd
     if [ $? == 0 ]; then
