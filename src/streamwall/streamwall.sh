@@ -26,7 +26,7 @@ Optional arguments:
   -n              Ignore error-images from ISS
   -t              Put a timestamp on the wallpaper
   -f <command>    Command to set the wallpaper (defaults to
-                    'feh --bg-scale {%FILE}')
+                    'feh --bg-fill {%FILE}')
   -w              Seconds to wait before getting the next image
                     (defaults to 180)
   -d              Print debug-messages
@@ -46,7 +46,7 @@ parse_args () {
     blank_ignore=false
     no_error=false
     do_timestamp=false
-    feh_cmd="feh --bg-scale $FILE"
+    feh_cmd="feh --bg-fill $FILE"
     wait_for=180
     debug=false
 
