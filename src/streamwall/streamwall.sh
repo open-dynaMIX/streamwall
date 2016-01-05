@@ -121,7 +121,8 @@ dep_check () {
 }
 
 timestamp () {
-    convert "$FILE" -gravity SouthEast -pointsize 14 -fill white -undercolor '#00000080' -annotate +1+3  "$(date)" "$FILE"
+    stampsize=$((resolution_now[1]*3/100))
+    convert "$FILE" -gravity SouthEast -pointsize $stampsize -fill white -undercolor '#00000080' -annotate +1+3  "$(date)" "$FILE"
 }
 
 cleanup () {
