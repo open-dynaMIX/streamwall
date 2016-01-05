@@ -179,6 +179,10 @@ compare_against () {
     fi
 }
 
+contains() {
+    [[ $1 =~ $2 ]] && return 0 || return 1
+}
+
 
 parse_args "$@"
 
@@ -222,21 +226,30 @@ while true; do
         continue
     fi
 
-    if $no_error; then
-        if ! compare_against "$scriptdir/images/iss_error.png" 20; then
-            interval
-            continue
+    # a list of the resolutions we have images for comparsion
+    resolutions=("1280 720"\
+                 "852 478")
+    resolution_now=$(identify -format "%w %h" $NEW_FILE)
+    echo "$resolution_now"
+    if contains "${resolutions[*]}" "$resolution_now"; then
+        resolist=($resolution_now)
+        resovar="_${resolist[1]}p"
+        if $no_error; then
+            if ! compare_against "$scriptdir/images/iss_error$resovar.png" 20; then
+                interval
+                continue
+            fi
         fi
-    fi
 
-    if $blank_ignore; then
-        if ! compare_against "$scriptdir/images/black.png" 30; then
-            interval
-            continue
-        fi
-        if ! compare_against "$scriptdir/images/grey.png" 50; then
-            interval
-            continue
+        if $blank_ignore; then
+            if ! compare_against "$scriptdir/images/black$resovar.png" 30; then
+                interval
+                continue
+            fi
+            if ! compare_against "$scriptdir/images/grey$resovar.png" 50; then
+                interval
+                continue
+            fi
         fi
     fi
 
