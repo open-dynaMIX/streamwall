@@ -228,12 +228,13 @@ while true; do
 
     # a list of the resolutions we have images for comparsion
     resolutions=("1280 720"\
-                 "852 478")
-    resolution_now=$(identify -format "%w %h" $NEW_FILE)
-    echo "$resolution_now"
-    if contains "${resolutions[*]}" "$resolution_now"; then
-        resolist=($resolution_now)
-        resovar="_${resolist[1]}p"
+                 "852 478"\
+                 "640 360"\
+                 "426 240")
+    resolution_now=($(identify -format "%w %h" $NEW_FILE))
+
+    if contains "${resolutions[*]}" "${resolution_now[*]}"; then
+        resovar="_${resolution_now[1]}p"
         if $no_error; then
             if ! compare_against "$scriptdir/images/iss_error$resovar.png" 20; then
                 interval
