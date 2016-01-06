@@ -248,6 +248,10 @@ while true; do
                 interval
                 continue
             fi
+            if ! compare_against "$scriptdir/images/blue$resovar.png" 30; then
+                interval
+                continue
+            fi
             if ! compare_against "$scriptdir/images/grey$resovar.png" 50; then
                 interval
                 continue
