@@ -229,6 +229,7 @@ while true; do
 
     # a list of the resolutions we have images for comparsion
     resolutions=("1280 720"\
+                 "854 480"\
                  "852 478"\
                  "640 360"\
                  "426 240")
