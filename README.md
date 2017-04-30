@@ -1,11 +1,11 @@
-#streamwall
+# streamwall
 Distributed under the GNU GPL  
 https://www.gnu.org/licenses/gpl-3.0.txt  
 Or see the file ./LICENSE  
 Exception: `iss_error.png` belongs to NASA
 
 
-##Introduction
+## Introduction
 Set images from livestreams as wallpaper at a given interval.  
 By default it uses the HDEV-stream from the International Space Station  
 (ISS).
@@ -19,7 +19,7 @@ You can find the actual and the previous wallpaper in `~/.streamwall`
 `streamwall` is not affiliated or endorsed by NASA.
 
 
-##Dependencies
+## Dependencies
 `streamwall` is written in bash and depends on:
  - streamlink
  - ffmpeg
@@ -29,7 +29,7 @@ Optional (default for setting wallpaper):
  - feh
 
 
-##Usage
+## Usage
 ```
 Usage: streamwall [OPTIONS]
 
@@ -51,7 +51,7 @@ Optional arguments:
 ```
 
 
-##Using custom streams
+## Using custom streams
 With the `-s` option, you can use a custom livestream that can be handled by  
 `streamlink`.
 
@@ -64,7 +64,7 @@ last part of the filename, just before the file-extension (e.g.
 `~/.streamwall/filters/white_30.png`).
 
 
-##High Definition Earth-Viewing System (HDEV)
+## High Definition Earth-Viewing System (HDEV)
 From http://eol.jsc.nasa.gov/HDEV/  
 The High Definition Earth Viewing (HDEV) experiment aboard the ISS was  
 activated April 30, 2014. It is mounted on the External Payload Facility of  
