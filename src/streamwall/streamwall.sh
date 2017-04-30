@@ -12,14 +12,14 @@ Usage: $appname [OPTIONS]
 Set images from livestreams as wallpaper at a given interval.
 By default it uses the HDEV-stream from the International Space Station
 (ISS)
-You can use any other livestream that can be handled by 'livestreamer'.
-See man livestreamer for more information.
+You can use any other livestream that can be handled by 'streamlink'.
+See man streamlink for more information.
 
 Optional arguments:
   -h              Show this help message and exit
   -s <url>        Stream url (defaults to
                     'https://www.ustream.tv/channel/iss-hdev-payload')
-  -q <quality>    Quality (defaults to 'best'. See 'man livestreamer'
+  -q <quality>    Quality (defaults to 'best'. See 'man streamlink'
                     for more information)
   -o              One-shot
   -b              Ignore blank images
@@ -91,9 +91,9 @@ parse_args () {
 
 dep_check () {
     error=false
-    if ! which livestreamer >> /dev/null 2>&1; then
+    if ! which streamlink >> /dev/null 2>&1; then
         error=true
-        echo "ERROR: $appname needs 'livestreamer' to be installed!"
+        echo "ERROR: $appname needs 'streamlink' to be installed!"
     fi
 
     if ! which ffmpeg >> /dev/null 2>&1; then
@@ -204,8 +204,7 @@ cd "$HOME"/.$appname || exit
 
 # first set existing wallpaper, if available, in case we run after a reboot
 if [ -f "$FILE" ]; then
-    $feh_cmd
-    if [ $? == 0 ]; then
+    if $feh_cmd; then
         echo "previous wallpaper set"
     else
         echo "ERROR: the command to set the wallpaper seems to have failed"
@@ -215,7 +214,7 @@ fi
 
 while true; do
     START=$(date "+%s.%3N")
-    if ! livestreamer --player "ffmpeg -i" --player-args "{filename} -y -vframes 1 $NEW_FILE" "$stream_url" "$quality"; then
+    if ! streamlink --player "ffmpeg -i" --player-args "{filename} -y -vframes 1 $NEW_FILE" "$stream_url" "$quality"; then
         echo "failure"
         interval
         continue
@@ -265,7 +264,7 @@ while true; do
         filter_active=false
         for data in "$HOME"/.$appname/filters/*; do
             if file -i "$data" | grep -q "image/"; then
-                threshold_raw=($(echo "$data" | egrep -o [0-9]+))
+                threshold_raw=($(echo "$data" | grep -E -o "[0-9]+"))
                 if [ ${#threshold_raw[@]} -eq 0 ]; then
                     threshold=20
                 else
@@ -294,8 +293,7 @@ while true; do
         timestamp
     fi
 
-    $feh_cmd
-    if [ $? == 0 ]; then
+    if $feh_cmd; then
         echo "new wallpaper set"
     else
         echo "ERROR: the command to set the wallpaper seems to have failed"

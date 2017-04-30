@@ -11,8 +11,8 @@ By default it uses the HDEV-stream from the International Space Station
 (ISS).
 
 With the `-s` option, you can use any livestream that can be handled  
-by `livestreamer`.  
-See `man livestreamer` for more information.
+by `streamlink`.  
+See `man streamlink` for more information.
 
 You can find the actual and the previous wallpaper in `~/.streamwall`
 
@@ -21,7 +21,7 @@ You can find the actual and the previous wallpaper in `~/.streamwall`
 
 ##Dependencies
 `streamwall` is written in bash and depends on:
- - livestreamer
+ - streamlink
  - ffmpeg
  - imagemagick
 
@@ -37,7 +37,7 @@ Optional arguments:
   -h              Show this help message and exit
   -s <url>        Stream url (defaults to
                     'https://www.ustream.tv/channel/iss-hdev-payload')
-  -q <quality>    Quality (defaults to 'best'. See 'man livestreamer'
+  -q <quality>    Quality (defaults to 'best'. See 'man streamlink'
                     for more information)
   -o              One-shot
   -b              Ignore blank images
@@ -53,7 +53,7 @@ Optional arguments:
 
 ##Using custom streams
 With the `-s` option, you can use a custom livestream that can be handled by  
-`livestreamer`.
+`streamlink`.
 
 If you want to filter certain images from showing up as wallpaper, you can  
 fetch those images and put them in a folder `~/.streamwall/filters/`.
