@@ -18,7 +18,7 @@ See man streamlink for more information.
 Optional arguments:
   -h              Show this help message and exit
   -s <url>        Stream url (defaults to
-                    'https://www.ustream.tv/channel/iss-hdev-payload')
+                    'http://www.ustream.tv/channel/iss-hdev-payload')
   -q <quality>    Quality (defaults to 'best'. See 'man streamlink'
                     for more information)
   -o              One-shot
@@ -40,7 +40,7 @@ parse_args () {
     OPTIND=1 # Reset in case getopts has been used previously in the shell.
 
     # Initialize our own variables:
-    stream_url="https://www.ustream.tv/channel/iss-hdev-payload"
+    stream_url="http://www.ustream.tv/channel/iss-hdev-payload"
     quality="best"
     one_shot=false
     blank_ignore=false
@@ -252,7 +252,7 @@ while true; do
                 interval
                 continue
             fi
-            if ! compare_against "$scriptdir/images/grey$resovar.png" 50; then
+            if ! compare_against "$scriptdir/images/grey$resovar.png" 30; then
                 interval
                 continue
             fi
