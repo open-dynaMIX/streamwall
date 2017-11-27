@@ -36,7 +36,7 @@ Usage: streamwall [OPTIONS]
 Optional arguments:
   -h              Show this help message and exit
   -s <url>        Stream url (defaults to
-                    'https://www.ustream.tv/channel/iss-hdev-payload')
+                    'http://www.ustream.tv/channel/iss-hdev-payload')
   -q <quality>    Quality (defaults to 'best'. See 'man streamlink'
                     for more information)
   -o              One-shot
