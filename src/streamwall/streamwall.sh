@@ -214,7 +214,7 @@ fi
 
 while true; do
     START=$(date "+%s.%3N")
-    if ! streamlink --player "ffmpeg -i" --player-args "{filename} -y -vframes 1 $NEW_FILE" "$stream_url" "$quality"; then
+    if ! streamlink --player "ffmpeg" --player-args "-i {filename} -y -vframes 1 $NEW_FILE" "$stream_url" "$quality"; then
         echo "failure"
         interval
         continue
