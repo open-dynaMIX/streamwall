@@ -18,7 +18,7 @@ See man streamlink for more information.
 Optional arguments:
   -h              Show this help message and exit
   -s <url>        Stream url (defaults to
-                    'http://www.ustream.tv/channel/iss-hdev-payload')
+                    'https://www.youtube.com/watch?v=P9C25Un7xaM')
   -q <quality>    Quality (defaults to 'best'. See 'man streamlink'
                     for more information)
   -o              One-shot
@@ -40,7 +40,7 @@ parse_args () {
     OPTIND=1 # Reset in case getopts has been used previously in the shell.
 
     # Initialize our own variables:
-    stream_url="http://www.ustream.tv/channel/iss-hdev-payload"
+    stream_url="https://www.youtube.com/watch?v=P9C25Un7xaM"
     quality="best"
     one_shot=false
     blank_ignore=false
@@ -106,7 +106,7 @@ dep_check () {
         echo "ERROR: $appname needs 'imagemagick' to be installed!"
     fi
 
-    cmd_list=($feh_cmd)
+    cmd_list=("$feh_cmd")
     if [ "${cmd_list[0]}" == "feh" ]; then
         if ! which feh >> /dev/null 2>&1; then
             error=true
@@ -165,7 +165,7 @@ compare_against () {
     # $1 = file to use for comparsion
     # $2 = threshold
     if [ -f "$1" ]; then
-        diff=$(compare -metric PSNR $NEW_FILE "$1" NULL: 2>&1)
+        diff=$(compare -metric PSNR $NEW_FILE "$1" NULL: 2>&1 | awk '{print $1}')
         if [ $? == 2 ]; then
             echo "WARNING: Failed to compare image against $1! Maybe the image widths or heights differ."
             return
@@ -214,7 +214,7 @@ fi
 
 while true; do
     START=$(date "+%s.%3N")
-    if ! streamlink --player "ffmpeg" --player-args "-i {filename} -y -vframes 1 $NEW_FILE" "$stream_url" "$quality"; then
+    if ! streamlink --player "ffmpeg" --player-args "-i {playerinput} -y -vframes 1 $NEW_FILE" "$stream_url" "$quality"; then
         echo "failure"
         interval
         continue
